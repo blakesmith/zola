@@ -7,13 +7,13 @@ use site::Site;
 use console;
 
 pub fn build(
-    site_path: Option<&str>,
+    base_path: Option<&str>,
     config_file: &str,
     base_url: Option<&str>,
     output_dir: &str,
 ) -> Result<()> {
-    let sp = site_path.map(PathBuf::from).unwrap_or(env::current_dir().unwrap());
-    let mut site = Site::new(sp, config_file)?;
+    let bp = base_path.map(PathBuf::from).unwrap_or(env::current_dir().unwrap());
+    let mut site = Site::new(bp, config_file)?;
     site.set_output_path(output_dir);
     if let Some(b) = base_url {
         site.set_base_url(b.to_string());

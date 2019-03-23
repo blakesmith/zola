@@ -84,9 +84,18 @@ fn main() {
             }
             let watch_only = matches.is_present("watch_only");
             let output_dir = matches.value_of("output_dir").unwrap();
+            let base_path = matches.value_of("base_path");
             let base_url = matches.value_of("base_url").unwrap();
             console::info("Building site...");
-            match cmd::serve(interface, port, output_dir, base_url, config_file, watch_only) {
+            match cmd::serve(
+                interface,
+                port,
+                output_dir,
+                base_path,
+                base_url,
+                config_file,
+                watch_only,
+            ) {
                 Ok(()) => (),
                 Err(e) => {
                     console::unravel_errors("", &e);
