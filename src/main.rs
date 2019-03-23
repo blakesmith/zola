@@ -46,7 +46,12 @@ fn main() {
             console::info("Building site...");
             let start = Instant::now();
             let output_dir = matches.value_of("output_dir").unwrap();
-            match cmd::build(config_file, matches.value_of("base_url"), output_dir) {
+            match cmd::build(
+                matches.value_of("site_path"),
+                config_file,
+                matches.value_of("base_url"),
+                output_dir,
+            ) {
                 Ok(()) => console::report_elapsed_time(start),
                 Err(e) => {
                     console::unravel_errors("Failed to build the site", &e);

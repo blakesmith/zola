@@ -30,6 +30,11 @@ pub fn build_cli() -> App<'static, 'static> {
                         .long("base-url")
                         .takes_value(true)
                         .help("Force the base URL to be that value (default to the one in config.toml)"),
+                    Arg::with_name("site_path")
+                        .short("s")
+                        .long("site-path")
+                        .takes_value(true)
+                        .help("Force the base site path to a certain directory (default to the current working directory)"),
                     Arg::with_name("output_dir")
                         .short("o")
                         .long("output-dir")
